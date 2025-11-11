@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+2. **Click on `src/App.js`** → Delete everything and paste the App.jsx code from my earlier guide
+
+---
+
+## Step 5: Your Structure Should Look Like This:
+```
+src/
+├── components/
+│   └── layout/
+│       ├── Header.jsx (empty for now)
+│       ├── Footer.jsx (empty for now)
+│       └── Layout.jsx (empty for now)
+├── pages/
+│   ├── Home.jsx (empty for now)
+│   ├── Games.jsx (empty for now)
+│   ├── GamePage.jsx (empty for now)
+│   └── GuidePage.jsx (empty for now)
+├── services/
+│   └── supabase.js (empty for now)
+├── App.js (updated)
+├── index.js (existing)
+└── index.css (updated)
