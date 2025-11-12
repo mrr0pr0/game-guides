@@ -22,14 +22,3 @@ function App() {
 }
 
 export default App
-```
-
----
-
-## Step 2: Create `.env` File
-
-1. **Right-click in the root folder** (game-guides, NOT inside src) → **New File** → type `.env`
-2. Add this content (we'll fill in real values later):
-```
-REACT_APP_SUPABASE_URL=your_supabase_url_here
-REACT_APP_SUPABASE_ANON_KEY=your_supabase_key_here
