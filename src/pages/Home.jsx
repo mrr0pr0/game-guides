@@ -27,13 +27,30 @@ const Home = () => {
 
   return (
     <div className="max-w-7xl mx-auto">
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-4">Guides</h1>
-        <p className="text-xl text-gray-600">Guides, Step-by-Step Walkthroughs, Cheats, FAQs and more</p>
+      {/* Hero */}
+      <div className="relative mb-10">
+        <div className="bg-zinc-900 text-white rounded-xl overflow-hidden">
+          <div className="p-6 md:p-10 grid md:grid-cols-2 gap-6 items-center">
+            <div>
+              <div className="text-red-500 font-semibold uppercase tracking-widest text-xs mb-2">Featured</div>
+              <h1 className="text-3xl md:text-5xl font-extrabold leading-tight mb-4">
+                Your hub for walkthroughs, boss guides, and secrets
+              </h1>
+              <p className="text-zinc-300 mb-6">Step-by-step guides across the biggest games. Built for quick scanning and deep dives, like you see on IGN.</p>
+            </div>
+            <div className="hidden md:block">
+              <div className="aspect-video bg-zinc-800 rounded-lg" />
+            </div>
+          </div>
+        </div>
       </div>
 
+      {/* Popular */}
       <section className="mb-12">
-        <h2 className="text-2xl font-bold mb-6">Popular in guides</h2>
+        <div className="flex items-baseline justify-between mb-6">
+          <h2 className="text-2xl font-extrabold tracking-tight">Trending Guides</h2>
+          <span className="text-sm text-zinc-500">Updated daily</span>
+        </div>
         {games.length === 0 ? (
           <p className="text-gray-600 text-center py-8">No games available yet. Add some in Supabase!</p>
         ) : (
@@ -42,22 +59,18 @@ const Home = () => {
               <Link 
                 key={game.id} 
                 to={`/games/${game.slug}`}
-                className="block bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
+                className="group block rounded-xl overflow-hidden bg-black"
               >
                 <div className="relative">
                   <img 
-                    src={game.cover_image || 'https://via.placeholder.com/400x200?text=Game+Cover'} 
+                    src={game.cover_image || 'https://via.placeholder.com/800x450?text=Game+Cover'} 
                     alt={game.title}
-                    className="w-full h-48 object-cover"
+                    className="w-full aspect-video object-cover group-hover:opacity-95 transition"
                   />
-                </div>
-                <div className="p-4">
-                  <h3 className="font-bold text-lg mb-1">{game.title}</h3>
-                  <p className="text-sm text-gray-600 mb-2">{game.description || 'No description available'}</p>
-                  <div className="flex items-center gap-2 text-xs text-gray-500">
-                    {game.platforms && game.platforms.slice(0, 2).map(platform => (
-                      <span key={platform}>{platform}</span>
-                    ))}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                  <div className="absolute bottom-0 p-4">
+                    <div className="inline-block bg-red-600 text-white text-xs font-bold uppercase tracking-wider px-2 py-1">Guide</div>
+                    <h3 className="mt-2 text-white text-xl font-extrabold drop-shadow">{game.title}</h3>
                   </div>
                 </div>
               </Link>
@@ -66,8 +79,9 @@ const Home = () => {
         )}
       </section>
 
+      {/* All */}
       <section>
-        <h2 className="text-2xl font-bold mb-6">All Guides</h2>
+        <h2 className="text-2xl font-extrabold tracking-tight mb-6">All Guides</h2>
         {games.length === 0 ? (
           <p className="text-gray-600 text-center py-8">No games available yet.</p>
         ) : (
@@ -80,12 +94,13 @@ const Home = () => {
               >
                 <div className="relative overflow-hidden rounded-lg mb-3">
                   <img 
-                    src={game.cover_image || 'https://via.placeholder.com/400x400?text=Game+Cover'} 
+                    src={game.cover_image || 'https://via.placeholder.com/600x600?text=Game+Cover'} 
                     alt={game.title}
                     className="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-300"
                   />
+                  <div className="absolute inset-0 ring-1 ring-inset ring-black/5 rounded-lg pointer-events-none" />
                 </div>
-                <h3 className="font-bold text-sm mb-1 group-hover:text-blue-600 transition-colors">
+                <h3 className="font-bold text-sm mb-1 group-hover:text-red-600 transition-colors">
                   {game.title}
                 </h3>
                 <p className="text-xs text-gray-500">Guide</p>

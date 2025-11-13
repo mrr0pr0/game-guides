@@ -44,7 +44,7 @@ const Games = () => {
   return (
     <div className="max-w-7xl mx-auto">
       <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-4">All Guides</h1>
+        <h1 className="text-4xl font-extrabold tracking-tight mb-4">All Guides</h1>
         
         <div className="flex gap-4 items-center mb-6">
           <input
@@ -52,12 +52,12 @@ const Games = () => {
             placeholder="Search games..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="flex-1 max-w-md px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="flex-1 max-w-md px-4 py-2 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white"
           />
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-4 py-2 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white"
           >
             <option value="popular">Most Popular</option>
             <option value="az">Alphabetical - A to Z</option>
@@ -82,8 +82,9 @@ const Games = () => {
                   alt={game.title}
                   className="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-300"
                 />
+                <div className="absolute inset-0 ring-1 ring-inset ring-black/5 rounded-lg pointer-events-none" />
               </div>
-              <h3 className="font-bold text-sm mb-1 group-hover:text-blue-600 transition-colors">
+              <h3 className="font-bold text-sm mb-1 group-hover:text-red-600 transition-colors">
                 {game.title} Guide
               </h3>
               <p className="text-xs text-gray-500">

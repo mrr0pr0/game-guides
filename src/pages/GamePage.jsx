@@ -58,16 +58,16 @@ const GamePage = () => {
     <div className="flex gap-8 max-w-7xl mx-auto">
       <aside className="hidden lg:block w-64 flex-shrink-0">
         <div className="sticky top-4">
-          <div className="bg-white border border-gray-200 rounded-lg p-4 mb-4">
-            <h3 className="font-bold text-sm mb-3 text-gray-700 uppercase">Guide Categories</h3>
+          <div className="bg-white border border-zinc-200 rounded-lg p-4 mb-4">
+            <h3 className="font-bold text-sm mb-3 text-zinc-700 uppercase">Guide Categories</h3>
             <ul className="space-y-2">
               <li>
                 <button
                   onClick={() => setActiveCategory('all')}
                   className={`text-sm w-full text-left px-2 py-1 rounded ${
                     activeCategory === 'all' 
-                      ? 'bg-blue-50 text-blue-700 font-medium' 
-                      : 'text-gray-700 hover:bg-gray-50'
+                      ? 'bg-red-50 text-red-700 font-medium' 
+                      : 'text-zinc-700 hover:bg-zinc-50'
                   }`}
                 >
                   All Guides ({guides.length})
@@ -79,8 +79,8 @@ const GamePage = () => {
                     onClick={() => setActiveCategory(type)}
                     className={`text-sm w-full text-left px-2 py-1 rounded capitalize ${
                       activeCategory === type 
-                        ? 'bg-blue-50 text-blue-700 font-medium' 
-                        : 'text-gray-700 hover:bg-gray-50'
+                        ? 'bg-red-50 text-red-700 font-medium' 
+                        : 'text-zinc-700 hover:bg-zinc-50'
                     }`}
                   >
                     {type} ({guides.filter(g => g.guide_type === type).length})
@@ -93,7 +93,7 @@ const GamePage = () => {
       </aside>
 
       <main className="flex-1 min-w-0">
-        <div className="bg-white border border-gray-200 rounded-lg overflow-hidden mb-8">
+        <div className="bg-white border border-zinc-200 rounded-lg overflow-hidden mb-8">
           <div className="relative h-48">
             <img 
               src={game.cover_image || 'https://via.placeholder.com/1200x400?text=Game+Banner'} 
@@ -102,33 +102,33 @@ const GamePage = () => {
             />
           </div>
           <div className="p-6">
-            <h1 className="text-3xl font-bold mb-4">{game.title} Guide</h1>
-            <p className="text-gray-700 mb-4">{game.description}</p>
+            <h1 className="text-3xl font-extrabold mb-4">{game.title} Guide</h1>
+            <p className="text-zinc-700 mb-4">{game.description}</p>
             
             <div className="border-t pt-4 mt-4">
               <div className="grid grid-cols-2 gap-4 text-sm">
                 {game.release_date && (
                   <div>
                     <span className="font-semibold">Released</span>
-                    <p className="text-gray-600">{new Date(game.release_date).toLocaleDateString()}</p>
+                    <p className="text-zinc-600">{new Date(game.release_date).toLocaleDateString()}</p>
                   </div>
                 )}
                 {game.platforms && (
                   <div>
                     <span className="font-semibold">Platforms</span>
-                    <p className="text-gray-600">{game.platforms.join(', ')}</p>
+                    <p className="text-zinc-600">{game.platforms.join(', ')}</p>
                   </div>
                 )}
                 {game.developer && (
                   <div>
                     <span className="font-semibold">Developer</span>
-                    <p className="text-gray-600">{game.developer}</p>
+                    <p className="text-zinc-600">{game.developer}</p>
                   </div>
                 )}
                 {game.publisher && (
                   <div>
                     <span className="font-semibold">Publisher</span>
-                    <p className="text-gray-600">{game.publisher}</p>
+                    <p className="text-zinc-600">{game.publisher}</p>
                   </div>
                 )}
               </div>
@@ -137,7 +137,7 @@ const GamePage = () => {
         </div>
 
         <div>
-          <h2 className="text-2xl font-bold mb-6">{game.title} Walkthrough and Guides</h2>
+          <h2 className="text-2xl font-extrabold mb-6">{game.title} Walkthrough and Guides</h2>
           {filteredGuides.length === 0 ? (
             <p className="text-gray-600">No guides available yet.</p>
           ) : (
@@ -150,15 +150,15 @@ const GamePage = () => {
                       <Link 
                         key={guide.id}
                         to={`/games/${slug}/guides/${guide.slug}`}
-                        className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
+                        className="bg-white border border-zinc-200 rounded-lg p-4 hover:shadow-md transition-shadow"
                       >
-                        <h4 className="font-semibold mb-2 text-blue-600 hover:text-blue-800">
+                        <h4 className="font-semibold mb-2 text-red-600 group-hover:text-red-700">
                           {guide.title}
                         </h4>
-                        <p className="text-sm text-gray-600 line-clamp-2">
+                        <p className="text-sm text-zinc-600 line-clamp-2">
                           {guide.content.substring(0, 120)}...
                         </p>
-                        <p className="text-xs text-gray-500 mt-2">
+                        <p className="text-xs text-zinc-500 mt-2">
                           By {guide.author || 'Anonymous'}
                         </p>
                       </Link>

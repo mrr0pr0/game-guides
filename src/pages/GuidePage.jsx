@@ -53,14 +53,14 @@ const GuidePage = () => {
     <div className="flex gap-8 max-w-7xl mx-auto">
       <aside className="hidden lg:block w-64 flex-shrink-0">
         <div className="sticky top-4">
-          <div className="bg-white border border-gray-200 rounded-lg p-4 mb-4">
+          <div className="bg-white border border-zinc-200 rounded-lg p-4 mb-4">
             <Link 
               to={`/games/${guide.game.slug}`}
-              className="text-blue-600 hover:underline text-sm mb-4 block"
+              className="text-red-600 hover:underline text-sm mb-4 block"
             >
               ← Back to {guide.game.title}
             </Link>
-            <h3 className="font-bold text-sm mb-3 text-gray-700 uppercase">Table of Contents</h3>
+            <h3 className="font-bold text-sm mb-3 text-zinc-700 uppercase">Table of Contents</h3>
             <ul className="space-y-2">
               {allGuides.map(g => (
                 <li key={g.id}>
@@ -68,8 +68,8 @@ const GuidePage = () => {
                     to={`/games/${slug}/guides/${g.slug}`}
                     className={`text-sm block px-2 py-1 rounded ${
                       g.slug === guideSlug
-                        ? 'bg-blue-50 text-blue-700 font-medium'
-                        : 'text-gray-700 hover:bg-gray-50'
+                        ? 'bg-red-50 text-red-700 font-medium'
+                        : 'text-zinc-700 hover:bg-zinc-50'
                     }`}
                   >
                     {g.title}
@@ -82,13 +82,13 @@ const GuidePage = () => {
       </aside>
 
       <main className="flex-1 min-w-0">
-        <article className="bg-white border border-gray-200 rounded-lg p-8">
+        <article className="bg-white border border-zinc-200 rounded-lg p-8">
           <header className="mb-8 pb-6 border-b">
-            <h1 className="text-3xl font-bold mb-4">{guide.title}</h1>
-            <div className="flex items-center gap-4 text-sm text-gray-600">
+            <h1 className="text-3xl font-extrabold mb-4">{guide.title}</h1>
+            <div className="flex items-center gap-4 text-sm text-zinc-600">
               <span>By {guide.author || 'Anonymous'}</span>
               {guide.guide_type && (
-                <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded capitalize">
+                <span className="bg-red-100 text-red-800 px-3 py-1 rounded capitalize">
                   {guide.guide_type}
                 </span>
               )}
@@ -114,7 +114,7 @@ const GuidePage = () => {
                 return (
                   <ol key={index} className="list-decimal list-inside mb-4 space-y-2">
                     {lines.map((line, i) => (
-                      <li key={i} className="text-gray-800 leading-relaxed">
+                      <li key={i} className="text-zinc-800 leading-relaxed">
                         {line.replace(/^\d+\.\s*/, '')}
                       </li>
                     ))}
@@ -122,7 +122,7 @@ const GuidePage = () => {
                 )
               }
               return (
-                <p key={index} className="mb-4 text-gray-800 leading-relaxed">
+                <p key={index} className="mb-4 text-zinc-800 leading-relaxed">
                   {section}
                 </p>
               )
@@ -133,7 +133,7 @@ const GuidePage = () => {
         <div className="mt-6">
           <Link 
             to={`/games/${guide.game.slug}`}
-            className="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
+            className="inline-block bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition"
           >
             View All {guide.game.title} Guides
           </Link>
