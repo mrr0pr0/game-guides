@@ -251,4 +251,4 @@ For cover images, you can use:
 
 ---
 
-**Need help?** Check the `example-game-setup.sql` file for a complete working example!
+**Need help?** Check the `example-game-setup.sql` file for a complete working example
