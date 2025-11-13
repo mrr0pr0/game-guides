@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = () => {
   return (
     <footer className="bg-zinc-900 text-zinc-300 py-10 mt-16">
-      <div className="max-w-7xl mx-auto px-4">
+    <div className="container-page">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div className="font-extrabold tracking-wider uppercase text-white">GameGuides</div>
           <ul className="flex gap-6 text-sm">

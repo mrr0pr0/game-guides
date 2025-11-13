@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 const Header = () => {
   return (
     <header className="sticky top-0 z-50 shadow-sm">
-      <div className="bg-black text-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="h-14 flex items-center justify-between">
+    <div className="bg-black text-white">
+    <div className="container-page">
+    <div className="h-14 flex items-center justify-between">
             <Link to="/" className="flex items-center gap-3 group">
               <span className="inline-block w-8 h-8 bg-red-600 group-hover:bg-red-500 transition-colors" aria-hidden="true"></span>
               <span className="font-extrabold tracking-wider text-xl uppercase">GameGuides</span>

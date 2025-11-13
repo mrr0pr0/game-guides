@@ -55,10 +55,10 @@ const GamePage = () => {
   const categorizedGuides = categorizeGuides(filteredGuides)
 
   return (
-    <div className="flex gap-8 max-w-7xl mx-auto">
+    <div className="flex gap-8">
       <aside className="hidden lg:block w-64 flex-shrink-0">
         <div className="sticky top-4">
-          <div className="bg-white border border-zinc-200 rounded-lg p-4 mb-4">
+          <div className="sidebar-card mb-4">
             <h3 className="font-bold text-sm mb-3 text-zinc-700 uppercase">Guide Categories</h3>
             <ul className="space-y-2">
               <li>
@@ -93,7 +93,7 @@ const GamePage = () => {
       </aside>
 
       <main className="flex-1 min-w-0">
-        <div className="bg-white border border-zinc-200 rounded-lg overflow-hidden mb-8">
+        <div className="bg-white border border-zinc-200 rounded-xl overflow-hidden mb-8">
           <div className="relative h-48">
             <img 
               src={game.cover_image || 'https://via.placeholder.com/1200x400?text=Game+Banner'} 

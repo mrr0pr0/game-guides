@@ -50,10 +50,10 @@ const GuidePage = () => {
   }
 
   return (
-    <div className="flex gap-8 max-w-7xl mx-auto">
+    <div className="flex gap-8">
       <aside className="hidden lg:block w-64 flex-shrink-0">
         <div className="sticky top-4">
-          <div className="bg-white border border-zinc-200 rounded-lg p-4 mb-4">
+          <div className="sidebar-card mb-4">
             <Link 
               to={`/games/${guide.game.slug}`}
               className="text-red-600 hover:underline text-sm mb-4 block"
@@ -82,10 +82,10 @@ const GuidePage = () => {
       </aside>
 
       <main className="flex-1 min-w-0">
-        <article className="bg-white border border-zinc-200 rounded-lg p-8">
-          <header className="mb-8 pb-6 border-b">
-            <h1 className="text-3xl font-extrabold mb-4">{guide.title}</h1>
-            <div className="flex items-center gap-4 text-sm text-zinc-600">
+        <article className="article">
+          <header className="article-header">
+            <h1 className="article-title">{guide.title}</h1>
+            <div className="article-meta">
               <span>By {guide.author || 'Anonymous'}</span>
               {guide.guide_type && (
                 <span className="bg-red-100 text-red-800 px-3 py-1 rounded capitalize">
@@ -100,7 +100,7 @@ const GuidePage = () => {
             </div>
           </header>
 
-          <div className="prose prose-lg max-w-none">
+          <div className="article-content">
             {guide.content.split('\n\n').map((section, index) => {
               if (section.trim().endsWith(':')) {
                 return (

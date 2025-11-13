@@ -26,7 +26,7 @@ const Home = () => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="container-page">
       {/* Hero */}
       <div className="relative mb-10">
         <div className="bg-zinc-900 text-white rounded-xl overflow-hidden">

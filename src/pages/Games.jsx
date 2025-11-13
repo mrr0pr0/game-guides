@@ -42,7 +42,7 @@ const Games = () => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="container-page">
       <div className="mb-8">
         <h1 className="text-4xl font-extrabold tracking-tight mb-4">All Guides</h1>
         
