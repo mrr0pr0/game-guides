@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="container-page">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
           <div>
-            <h3 className="text-white font-black text-lg mb-4">IGN<span className="text-red-600">Guide</span></h3>
+            <h3 className="text-white font-black text-lg mb-4">GAD<span className="text-red-600">Guide</span></h3>
             <p className="text-sm leading-relaxed">Your ultimate destination for game walkthroughs, guides, and tips.</p>
           </div>
 
@@ -43,7 +43,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-neutral-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-xs">&copy; 2025 IGNGuide. All rights reserved.</div>
+          <div className="text-xs">&copy; 2025 GADGuide. All rights reserved.</div>
           <div className="flex gap-6 text-xs">
             <Link to="/" className="hover:text-red-500 transition-colors">Terms of Use</Link>
             <Link to="/" className="hover:text-red-500 transition-colors">Privacy Policy</Link>
