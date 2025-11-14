@@ -97,7 +97,11 @@ const GuidePage = () => {
                       {typeGuides.map(g => (
                         <li key={g.id}>
                           <Link
-                            to={`/games/${slug}/guides/${g.slug}`}
+                            to={
+                              type.toLowerCase() === 'supabase' 
+                                ? `/supabase-guide/${g.slug}` 
+                                : `/games/$${slug}/guides/$$ {g.slug}`
+                            }
                             className={`text-sm block px-3 py-2 rounded font-medium transition-colors ${
                               g.slug === guideSlug
                                 ? 'bg-red-600 text-white'
