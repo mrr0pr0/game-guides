@@ -15,20 +15,20 @@ const GuidePage = () => {
   const fetchGuide = async () => {
     try {
       const { data: gameData } = await supabase
-        .from('games')
+        .from('app_d563a3af02_games')
         .select('id, title, slug')
         .eq('slug', slug)
         .single()
 
       const { data: guideData } = await supabase
-        .from('guides')
+        .from('app_d563a3af02_guides')
         .select('*')
         .eq('game_id', gameData.id)
         .eq('slug', guideSlug)
         .single()
 
       const { data: guidesData } = await supabase
-        .from('guides')
+        .from('app_d563a3af02_guides')
         .select('id, title, slug, guide_type')
         .eq('game_id', gameData.id)
         .order('guide_type', { ascending: true })
