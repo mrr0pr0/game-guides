@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { supabase } from '../services/supabase'
+import GuideContent from '../components/GuideContent'
 
 const GuidePage = () => {
   const { slug, guideSlug } = useParams()
@@ -10,6 +11,7 @@ const GuidePage = () => {
 
   useEffect(() => {
     fetchGuide()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug, guideSlug])
 
   const fetchGuide = async () => {
@@ -145,38 +147,7 @@ const GuidePage = () => {
               </div>
             </header>
 
-            <div className="article-content">
-              {guide.content.split('\n\n').map((section, index) => {
-                if (section.trim().endsWith(':')) {
-                  return (
-                    <h2 key={index}>
-                      {section}
-                    </h2>
-                  )
-                }
-
-                const lines = section.split('\n')
-                if (lines.some(line => line.match(/^\d+\./))) {
-                  return (
-                    <ol key={index}>
-                      {lines.map((line, i) => {
-                        const match = line.match(/^\d+\.\s*(.*)/)
-                        if (match) {
-                          return <li key={i}>{match[1]}</li>
-                        }
-                        return null
-                      })}
-                    </ol>
-                  )
-                }
-
-                if (section.trim()) {
-                  return <p key={index}>{section}</p>
-                }
-
-                return null
-              })}
-            </div>
+            <GuideContent content={guide.content} />
           </article>
 
           <div className="mt-8 p-6 bg-neutral-900 rounded-lg text-white">
