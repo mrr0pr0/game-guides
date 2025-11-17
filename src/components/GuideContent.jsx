@@ -1,5 +1,6 @@
 import React from 'react'
 import DOMPurify from 'isomorphic-dompurify'
+import ShrineTracker from './ShrineTracker'
 
 const GuideContent = ({ content }) => {
   const sanitizeConfig = {
@@ -20,6 +21,7 @@ const GuideContent = ({ content }) => {
   const processContent = (htmlContent) => {
     let processed = htmlContent
 
+    // Process spoiler tags
     processed = processed.replace(
       /<spoiler(?:\s+title="([^"]*)")?>([\s\S]*?)<\/spoiler>/gi,
       (match, title, content) => {
@@ -40,6 +42,7 @@ const GuideContent = ({ content }) => {
       }
     )
 
+    // Process YouTube embeds
     processed = processed.replace(
       /<iframe[^>]*src="(?:https?:\/\/)?(?:www\.)?youtube\.com\/embed\/([^"?]+)[^"]*"[^>]*>/gi,
       (match, videoId) => {
@@ -60,7 +63,29 @@ const GuideContent = ({ content }) => {
     return processed
   }
 
-  const processedContent = processContent(content)
+  // Check if content contains shrine tracker marker
+  if (content && content.includes('[SHRINE_TRACKER]')) {
+    const parts = content.split('[SHRINE_TRACKER]')
+    const beforeContent = parts[0] ? processContent(parts[0]) : ''
+    const afterContent = parts[1] ? processContent(parts[1]) : ''
+    const sanitizedBefore = DOMPurify.sanitize(beforeContent, sanitizeConfig)
+    const sanitizedAfter = DOMPurify.sanitize(afterContent, sanitizeConfig)
+    
+    return (
+      <div className="article-content">
+        {sanitizedBefore && (
+          <div dangerouslySetInnerHTML={{ __html: sanitizedBefore }} />
+        )}
+        <ShrineTracker />
+        {sanitizedAfter && (
+          <div dangerouslySetInnerHTML={{ __html: sanitizedAfter }} />
+        )}
+      </div>
+    )
+  }
+
+  // Regular content processing
+  const processedContent = processContent(content || '')
   const sanitizedContent = DOMPurify.sanitize(processedContent, sanitizeConfig)
 
   return (

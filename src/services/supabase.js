@@ -49,6 +49,95 @@ export const getGuideBySlug = async (gameId, slug) => {
   if (error) throw error
   return data
 }
+// Add these shrine helper functions to your existing supabase.js file
+
+// Get all shrines
+export const getShrines = async () => {
+  const { data, error } = await supabase
+    .from('shrines')
+    .select('*')
+    .order('id', { ascending: true })
+  
+  if (error) throw error
+  return data
+}
+
+// Get shrines by region
+export const getShrinesByRegion = async (region) => {
+  const { data, error } = await supabase
+    .from('shrines')
+    .select('*')
+    .eq('region', region)
+    .order('id', { ascending: true })
+  
+  if (error) throw error
+  return data
+}
+
+// Get a single shrine by id
+export const getShrineById = async (id) => {
+  const { data, error } = await supabase
+    .from('shrines')
+    .select('*')
+    .eq('id', id)
+    .single()
+  
+  if (error) throw error
+  return data
+}
+
+// Toggle shrine completion status
+export const toggleShrineDone = async (id, done) => {
+  const { data, error } = await supabase
+    .from('shrines')
+    .update({ done })
+    .eq('id', id)
+    .select()
+    .single()
+  
+  if (error) throw error
+  return data
+}
+
+// Update shrine map link
+export const updateShrineMapLink = async (id, mapLink) => {
+  const { data, error } = await supabase
+    .from('shrines')
+    .update({ map_link: mapLink })
+    .eq('id', id)
+    .select()
+    .single()
+  
+  if (error) throw error
+  return data
+}
+
+// Get completion statistics
+export const getShrineStats = async () => {
+  const { data, error } = await supabase
+    .from('shrines')
+    .select('done, region')
+  
+  if (error) throw error
+  
+  const total = data.length
+  const completed = data.filter(shrine => shrine.done).length
+  const byRegion = data.reduce((acc, shrine) => {
+    if (!acc[shrine.region]) {
+      acc[shrine.region] = { total: 0, completed: 0 }
+    }
+    acc[shrine.region].total++
+    if (shrine.done) acc[shrine.region].completed++
+    return acc
+  }, {})
+  
+  return {
+    total,
+    completed,
+    percentage: ((completed / total) * 100).toFixed(1),
+    byRegion
+  }
+}
 
 // Additional helper function to get guide by slug with game info
 export const getGuideBySlugWithGame = async (gameSlug, guideSlug) => {
@@ -64,6 +153,7 @@ export const getGuideBySlugWithGame = async (gameSlug, guideSlug) => {
     .single()
   
   if (error) throw error
+  
   
   // Return guide with game info attached
   return {
